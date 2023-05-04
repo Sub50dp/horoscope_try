@@ -17,6 +17,10 @@ zodiac_dict = {
     'pisces': ('Рыбы - двенадцатый знак зодиака, планеты Юпитер (с 20 февраля по 20 марта).', {2: range(20, 29), 3: range(1, 21)}),
 }
 
+#
+# def get_years(request, sign_zodiac):
+#     return HttpResponse(f"Вы передали строку - {sign_zodiac}")
+
 
 def index(request):
     name_zodiac = list(zodiac_dict)
