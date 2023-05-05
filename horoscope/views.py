@@ -63,7 +63,10 @@ def types_zodiacs(request, sign_type):
 
 def get_info_zodiac(request, sign_zodiac: str):
     if sign_zodiac in zodiac_dict:
-        return HttpResponse(zodiac_dict.get(sign_zodiac)[0])
+        description = zodiac_dict.get(sign_zodiac)[0]
+        data = {"description_in_dict": description,
+                "sign_in_dict": sign_zodiac}
+        return render(request, 'horoscope/info_zodiac.html', context=data)
     else:
         return HttpResponseNotFound(f"Неизвестный знак зодиака - {sign_zodiac}")
 
