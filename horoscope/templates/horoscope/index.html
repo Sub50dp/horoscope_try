@@ -6,6 +6,5 @@
     {% for zodiac in zodiacs %}
         <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ zodiac|capfirst }}</a></li>
     {% endfor %}
-        <li style="font-size:30px; color:red"><a href="/horoscope/type">Type</a></li>
     </ul>
 {% endblock %}

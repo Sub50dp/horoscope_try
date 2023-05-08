@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+
+{% block title %}Стихии знаков зодиака{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for type in type_li %}
+            <li><a href="{% url 'type-name' sign_type=type  %}">{{type|capfirst}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
