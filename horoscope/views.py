@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
-
 zodiac_dict = {
     'aries': (
         'Овен - первый знак зодиака, планета Марс (с 21 марта по 20 апреля).', {3: range(21, 32), 4: range(1, 21)}),
@@ -44,17 +43,10 @@ def index(request):
     return render(request, "horoscope/index.html", context=contex_dict)
 
 
-def get_zodiac_date(request, month, day):
-    for key, value in zodiac_dict.items():
-        redirect_path = reverse("horoscope-name", args=[key])
-        if month in value[1] and day in value[1].get(month):
-            return HttpResponseRedirect(redirect_path)
-    return HttpResponseNotFound('Знак зодиака не найден')
-
-def type_zodiac(request):
+def type_zodiac_menu(request):
     type_li = ["fire", "earth", "air", "water"]
     type_zodiac_dict = {"type_li": type_li}
-    return render(request, 'horoscope/type_zodiac.html', context=type_zodiac_dict)
+    return render(request, 'horoscope/type_zodiac_menu.html', context=type_zodiac_dict)
 
 
 def types_zodiacs(request, sign_type):
@@ -62,12 +54,15 @@ def types_zodiacs(request, sign_type):
                         "fire": ["aries", "leo", "sagittarius"],
                         "water": ["pisces", "cancer", "scorpio"],
                         "earth": ["capricorn", "virgo", "taurus"]}
-    li_zodiac_for_type = ""
-    if sign_type in type_dict_zodiac:
-        for sign in type_dict_zodiac.get(sign_type):
-            redirect_path = reverse("horoscope-name", args=[sign])
-            li_zodiac_for_type += f"<li><a href='{redirect_path}'>{sign.title()}</a></li>"
-        return HttpResponse(f"<ul>{li_zodiac_for_type}</ul>")
+    data_dict = {"type_dict_zodiac": type_dict_zodiac,
+                 "sign_type": sign_type}
+    return render(request, 'horoscope/types_zodiacs.html', context=data_dict)
+    # li_zodiac_for_type = ""
+    # if sign_type in type_dict_zodiac:
+    #     for sign in type_dict_zodiac.get(sign_type):
+    #         redirect_path = reverse("horoscope-name", args=[sign])
+    #         li_zodiac_for_type += f"<li><a href='{redirect_path}'>{sign.title()}</a></li>"
+    #     return HttpResponse(f"<ul>{li_zodiac_for_type}</ul>")
 
 
 def get_info_zodiac(request, sign_zodiac: str):
@@ -79,6 +74,14 @@ def get_info_zodiac(request, sign_zodiac: str):
         return render(request, 'horoscope/info_zodiac.html', context=data)
     else:
         return HttpResponseNotFound(f"Неизвестный знак зодиака - {sign_zodiac}")
+
+
+def get_zodiac_date(request, month, day):
+    for key, value in zodiac_dict.items():
+        redirect_path = reverse("horoscope-name", args=[key])
+        if month in value[1] and day in value[1].get(month):
+            return HttpResponseRedirect(redirect_path)
+    return HttpResponseNotFound('Знак зодиака не найден')
 
 
 def get_info_zodiac_int(request, sign_zodiac: int):
