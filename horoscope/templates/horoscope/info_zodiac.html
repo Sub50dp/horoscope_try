@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Гороскоп для {{ sign_in_dict|capfirst }}</title>
-</head>
-<body>
-<h1>Приложение Гороскоп для {{ sign_in_dict|capfirst }}</h1>
-<h2>{{ description_in_dict }}</h2>
-</body>
-</html>
+{% extends "base.html"%}
+
+{% block title %}Гороскоп для {{ sign_in_dict|upper }}{% endblock %}
+
+{% block content %}
+    <h1>Приложение Гороскоп для {{ sign_in_dict|capfirst }}</h1>
+    <h2>{{ description_in_dict }}</h2>
+{% endblock %}
