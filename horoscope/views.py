@@ -44,7 +44,7 @@ def index(request):
 
 
 def type_zodiac_menu(request):
-    type_li = ["fire", "earth", "air", "water"]
+    type_li = [("fire", "огонь"), ("earth", "земля"), ("air", "воздух"), ("water", "вода")]
     type_zodiac_dict = {"type_li": type_li}
     return render(request, 'horoscope/type_zodiac_menu.html', context=type_zodiac_dict)
 
@@ -61,9 +61,11 @@ def types_zodiacs(request, sign_type):
 
 def get_info_zodiac(request, sign_zodiac: str):
     if sign_zodiac in zodiac_dict:
+        name_zodiac = list(zodiac_dict)
         description = zodiac_dict.get(sign_zodiac)[0]
         data = {"description_in_dict": description,
-                "sign_in_dict": sign_zodiac
+                "sign_in_dict": description.split()[0],
+                "name_zodiac": name_zodiac
                 }
         return render(request, 'horoscope/info_zodiac.html', context=data)
     else:

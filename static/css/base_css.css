@@ -1,3 +1,25 @@
 html {
         background-color: rgb(194, 179, 219);
     }
+
+nav a {
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+
+}
+nav {
+   text-align: center;
+   color: white;
+   font-size: 2rem;
+   height: 100%;
+   width: 150px;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: rgb(75, 107, 107);
+   overflow-x: hidden;
+   padding-top: 20px;
+   }
+

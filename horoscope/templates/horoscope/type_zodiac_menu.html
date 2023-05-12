@@ -1,11 +1,14 @@
 {% extends "base.html"%}
+{% load static %}
 
 {% block title %}Стихии знаков зодиака{% endblock %}
-
+{% block css_additional %}
+<link rel="stylesheet" href='{% static "horoscope/css/type_zodiac_menu.css" %}'>
+{% endblock %}
 {% block content %}
     <ul>
-        {% for type in type_li %}
-            <li><a href="{% url 'type-name' sign_type=type  %}">{{type|capfirst}}</a></li>
+        {% for type, type_ru in type_li %}
+            <li><a href="{% url 'type-name' sign_type=type  %}">{{type_ru|capfirst}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

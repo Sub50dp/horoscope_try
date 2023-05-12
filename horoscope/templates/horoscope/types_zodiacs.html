@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load my_filters%}
-
+{% load static %}
 {% block title %} {{sign_type}} {% endblock %}
+{% block css_additional %}
+    <link rel="stylesheet" href='{% static "horoscope/css/types_zodiacs.css" %}'>
+{% endblock %}
 
 {% block content %}
     <h1>Знаки зодиака стихии {{sign_type|capfirst}}</h1>
+    <ul>
     {% for sign in type_dict_zodiac|get_key:sign_type %}
-        <li><a href="{% url 'horoscope-name' sign_zodiac=sign %}">{{sign|capfirst}}</a></li>
+            <li><a href="{% url 'horoscope-name' sign_zodiac=sign %}">{{sign|capfirst}}</a></li>
     {% endfor %}
+    </ul>
 {% endblock %}

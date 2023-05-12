@@ -1,4 +1,3 @@
-
 ul {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -21,14 +20,4 @@ ul li {
 li a {
     color: rgb(57, 125, 39);
     text-decoration: none;
-}
-
-li a:hover{color: rgb(53, 62, 118)}
-
-h2 {
-    font-size: 50px;
-    text-align: center;
-    color: rgb(21, 71, 140);
-    letter-spacing: 8px;
-    text-shadow: 3px 5px 4px rgb(116, 147, 190);
 }

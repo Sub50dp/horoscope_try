@@ -1,3 +1,12 @@
-h2 {background-color: rgb(38, 218, 217);
+h2 {background-color: rgb(103, 126, 126);
     color: rgb(129, 89, 82);
+    text-align: center;
     }
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(121, 71, 110);
+    letter-spacing: 2px;
+    text-shadow: 3px 5px 4px rgb(146, 47, 190);
+}
