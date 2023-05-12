@@ -57,12 +57,6 @@ def types_zodiacs(request, sign_type):
     data_dict = {"type_dict_zodiac": type_dict_zodiac,
                  "sign_type": sign_type}
     return render(request, 'horoscope/types_zodiacs.html', context=data_dict)
-    # li_zodiac_for_type = ""
-    # if sign_type in type_dict_zodiac:
-    #     for sign in type_dict_zodiac.get(sign_type):
-    #         redirect_path = reverse("horoscope-name", args=[sign])
-    #         li_zodiac_for_type += f"<li><a href='{redirect_path}'>{sign.title()}</a></li>"
-    #     return HttpResponse(f"<ul>{li_zodiac_for_type}</ul>")
 
 
 def get_info_zodiac(request, sign_zodiac: str):
